@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - OfficeSupplies Pro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-boxes"></i>
+                <span>OfficeSupplies Pro</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Dashboard</a>
+                <a href="scenarios.html" class="nav-link">Scenarios</a>
+                <a href="products.html" class="nav-link">Products</a>
+                <a href="reports.html" class="nav-link active">Reports</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="page-header">
+            <h1>Analytics & Reports</h1>
+            <p>Comprehensive insights and analytics for your B2B pricing strategies</p>
+        </header>
+
+        <div class="reports-container">
+            <!-- Report Filters -->
+            <div class="report-filters-card">
+                <h2><i class="fas fa-chart-line"></i> Report Parameters</h2>
+                <div class="filters-row">
+                    <div class="filter-group">
+                        <label for="report-type">Report Type</label>
+                        <select id="report-type" class="form-control">
+                            <option value="revenue">Revenue Analysis</option>
+                            <option value="margin">Margin Analysis</option>
+                            <option value="client">Client Analysis</option>
+                            <option value="product">Product Performance</option>
+                            <option value="scenario">Scenario Comparison</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="date-range">Date Range</label>
+                        <select id="date-range" class="form-control">
+                            <option value="7">Last 7 Days</option>
+                            <option value="30" selected>Last 30 Days</option>
+                            <option value="90">Last 90 Days</option>
+                            <option value="365">Last Year</option>
+                            <option value="custom">Custom Range</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="client-segment">Client Segment</label>
+                        <select id="client-segment" class="form-control">
+                            <option value="all">All Segments</option>
+                            <option value="startup">Startup</option>
+                            <option value="sme">SME</option>
+                            <option value="enterprise">Enterprise</option>
+                            <option value="government">Government</option>
+                            <option value="education">Education</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <button id="generate-report-btn" class="btn btn-primary">
+                            <i class="fas fa-chart-bar"></i> Generate Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Metrics -->
+            <div class="metrics-section">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h3>Total Revenue</h3>
+                        <p class="metric-value">$2,847,392</p>
+                        <span class="metric-change positive">+12.5% vs last period</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h3>Active Clients</h3>
+                        <p class="metric-value">247</p>
+                        <span class="metric-change positive">+8.2% vs last period</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h3>Average Margin</h3>
+                        <p class="metric-value">23.4%</p>
+                        <span class="metric-change negative">-2.1% vs last period</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h3>Orders/Month</h3>
+                        <p class="metric-value">1,234</p>
+                        <span class="metric-change positive">+15.3% vs last period</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-section">
+                <div class="chart-card">
+                    <h3><i class="fas fa-chart-area"></i> Revenue Trend</h3>
+                    <div class="chart-container">
+                        <canvas id="revenue-chart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3><i class="fas fa-chart-pie"></i> Revenue by Client Type</h3>
+                    <div class="chart-container">
+                        <canvas id="client-chart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3><i class="fas fa-chart-bar"></i> Product Performance</h3>
+                    <div class="chart-container">
+                        <canvas id="product-chart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3><i class="fas fa-chart-line"></i> Margin Analysis</h3>
+                    <div class="chart-container">
+                        <canvas id="margin-chart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Reports -->
+            <div class="detailed-reports-section">
+                <div class="report-card">
+                    <h3><i class="fas fa-table"></i> Top Performing Products</h3>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Category</th>
+                                    <th>Revenue</th>
+                                    <th>Margin</th>
+                                    <th>Units Sold</th>
+                                    <th>Growth</th>
+                                </tr>
+                            </thead>
+                            <tbody id="top-products-table">
+                                <!-- Data will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="report-card">
+                    <h3><i class="fas fa-users"></i> Client Segment Analysis</h3>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Segment</th>
+                                    <th>Clients</th>
+                                    <th>Revenue</th>
+                                    <th>Avg. Order Value</th>
+                                    <th>Retention Rate</th>
+                                    <th>Growth</th>
+                                </tr>
+                            </thead>
+                            <tbody id="client-segments-table">
+                                <!-- Data will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Export Options -->
+            <div class="export-section">
+                <h3><i class="fas fa-download"></i> Export Reports</h3>
+                <div class="export-options">
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-file-pdf"></i> Export as PDF
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-file-excel"></i> Export as Excel
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-file-csv"></i> Export as CSV
+                    </button>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-share"></i> Share Report
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="reports.js"></script>
+</body>
+</html> 

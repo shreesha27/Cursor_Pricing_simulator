@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - OfficeSupplies Pro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-boxes"></i>
+                <span>OfficeSupplies Pro</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Dashboard</a>
+                <a href="scenarios.html" class="nav-link">Scenarios</a>
+                <a href="products.html" class="nav-link active">Products</a>
+                <a href="reports.html" class="nav-link">Reports</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="page-header">
+            <h1>Product Catalog</h1>
+            <p>Comprehensive inventory of office supplies with detailed pricing and margin analysis</p>
+        </header>
+
+        <div class="products-container">
+            <!-- Product Filters -->
+            <div class="product-filters-card">
+                <h2><i class="fas fa-filter"></i> Filter Products</h2>
+                <div class="filters-row">
+                    <div class="filter-group">
+                        <label for="category-filter">Category</label>
+                        <select id="category-filter" class="form-control">
+                            <option value="">All Categories</option>
+                            <option value="Paper & Printing">Paper & Printing</option>
+                            <option value="Writing Supplies">Writing Supplies</option>
+                            <option value="Furniture">Furniture</option>
+                            <option value="Break Room">Break Room</option>
+                            <option value="Janitorial">Janitorial</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="price-filter">Price Range</label>
+                        <select id="price-filter" class="form-control">
+                            <option value="">All Prices</option>
+                            <option value="0-50">$0 - $50</option>
+                            <option value="50-200">$50 - $200</option>
+                            <option value="200-500">$200 - $500</option>
+                            <option value="500+">$500+</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="margin-filter">Margin Range</label>
+                        <select id="margin-filter" class="form-control">
+                            <option value="">All Margins</option>
+                            <option value="15-20">15% - 20%</option>
+                            <option value="20-25">20% - 25%</option>
+                            <option value="25-30">25% - 30%</option>
+                            <option value="30+">30%+</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="search-products">Search</label>
+                        <input type="text" id="search-products" class="form-control" placeholder="Search products...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Statistics -->
+            <div class="product-stats-section">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Total Products</h3>
+                        <p class="stat-value" id="total-products">6</p>
+                        <span class="stat-change positive">Active</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Categories</h3>
+                        <p class="stat-value" id="total-categories">5</p>
+                        <span class="stat-change positive">Available</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Avg. Margin</h3>
+                        <p class="stat-value" id="avg-margin">26.9%</p>
+                        <span class="stat-change positive">+2.1%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Total Value</h3>
+                        <p class="stat-value" id="total-value">$1,065.46</p>
+                        <span class="stat-change positive">+5.3%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-catalog-card">
+                <div class="catalog-header">
+                    <h2><i class="fas fa-th-large"></i> Product Catalog</h2>
+                    <div class="view-controls">
+                        <button class="btn btn-secondary active" data-view="grid">
+                            <i class="fas fa-th"></i> Grid
+                        </button>
+                        <button class="btn btn-secondary" data-view="list">
+                            <i class="fas fa-list"></i> List
+                        </button>
+                    </div>
+                </div>
+                <div id="products-catalog" class="products-catalog">
+                    <!-- Products will be populated here -->
+                </div>
+            </div>
+
+            <!-- Product Detail Modal -->
+            <div id="product-modal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="modal-product-name"><i class="fas fa-box"></i> Product Details</h2>
+                        <button class="modal-close" onclick="closeProductModal()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div id="modal-product-content" class="modal-body">
+                        <!-- Product details will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="products.js"></script>
+</body>
+</html> 

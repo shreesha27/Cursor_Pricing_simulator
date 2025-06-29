@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scenarios - OfficeSupplies Pro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-boxes"></i>
+                <span>OfficeSupplies Pro</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Dashboard</a>
+                <a href="scenarios.html" class="nav-link active">Scenarios</a>
+                <a href="products.html" class="nav-link">Products</a>
+                <a href="reports.html" class="nav-link">Reports</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="page-header">
+            <h1>Pricing Scenarios</h1>
+            <p>Manage and compare different pricing strategies for your B2B contracts</p>
+        </header>
+
+        <div class="scenarios-container">
+            <!-- Scenario Creation -->
+            <div class="scenario-creation-card">
+                <h2><i class="fas fa-plus-circle"></i> Create New Scenario</h2>
+                <div class="scenario-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="scenario-name">Scenario Name</label>
+                            <input type="text" id="scenario-name" class="form-control" placeholder="e.g., Enterprise Q1 2024">
+                        </div>
+                        <div class="form-group">
+                            <label for="scenario-client-type">Client Type</label>
+                            <select id="scenario-client-type" class="form-control">
+                                <option value="startup">Startup (1-50 employees)</option>
+                                <option value="sme">SME (51-200 employees)</option>
+                                <option value="enterprise" selected>Enterprise (200+ employees)</option>
+                                <option value="government">Government</option>
+                                <option value="education">Education</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="scenario-volume">Annual Volume ($)</label>
+                            <input type="number" id="scenario-volume" class="form-control" placeholder="100000" value="100000">
+                        </div>
+                        <div class="form-group">
+                            <label for="scenario-contract">Contract Length (months)</label>
+                            <select id="scenario-contract" class="form-control">
+                                <option value="12">12 months</option>
+                                <option value="24" selected>24 months</option>
+                                <option value="36">36 months</option>
+                                <option value="48">48 months</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="scenario-payment">Payment Terms</label>
+                            <select id="scenario-payment" class="form-control">
+                                <option value="net30">Net 30</option>
+                                <option value="net60" selected>Net 60</option>
+                                <option value="net90">Net 90</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button id="create-scenario-btn" class="btn btn-primary">
+                            <i class="fas fa-calculator"></i> Calculate & Create Scenario
+                        </button>
+                        <button id="quick-calculate-btn" class="btn btn-secondary">
+                            <i class="fas fa-eye"></i> Preview Results
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scenario Results Preview -->
+            <div id="scenario-preview" class="scenario-preview-card" style="display: none;">
+                <h2><i class="fas fa-chart-bar"></i> Scenario Preview</h2>
+                <div id="preview-content"></div>
+            </div>
+
+            <!-- Scenarios List -->
+            <div class="scenarios-list-card">
+                <div class="scenarios-header">
+                    <h2><i class="fas fa-list"></i> Saved Scenarios</h2>
+                    <div class="scenarios-actions">
+                        <button id="compare-selected-btn" class="btn btn-primary" disabled>
+                            <i class="fas fa-balance-scale"></i> Compare Selected
+                        </button>
+                        <button id="export-scenarios-btn" class="btn btn-secondary">
+                            <i class="fas fa-download"></i> Export All
+                        </button>
+                    </div>
+                </div>
+                <div id="scenarios-grid" class="scenarios-grid">
+                    <!-- Scenarios will be populated here -->
+                </div>
+            </div>
+
+            <!-- Comparison Modal -->
+            <div id="comparison-modal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2><i class="fas fa-balance-scale"></i> Scenario Comparison</h2>
+                        <button class="modal-close" onclick="closeComparisonModal()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div id="comparison-content" class="modal-body">
+                        <!-- Comparison content will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="scenarios.js"></script>
+</body>
+</html> 
